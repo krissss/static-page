@@ -1,8 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const axios = require('axios')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const pinyin = require('pinyin-pro').pinyin
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path')
@@ -43,15 +41,6 @@ async function getFrom4399() {
     return result
 }
 
-function formatPinYin(list) {
-    console.log('formatPinYin')
-    list.forEach(item => {
-        item.py = pinyin(item.q, {toneType: 'none', type: 'string'})//.join('')
-    })
-
-    return list
-}
-
 (async () => {
     const objs = Object.assign(
         {},
@@ -67,7 +56,6 @@ function formatPinYin(list) {
             a: answer,
         })
     }
-    list = formatPinYin(list)
 
     console.log('write json')
     fs.writeFileSync(path.join(__dirname, 'keju.json'), JSON.stringify(list))
