@@ -52,7 +52,6 @@ export default {
         return
       }
       this.result = this.idx.search(this.searchVal)
-      console.log(this.result)
     }
   },
   mounted() {
