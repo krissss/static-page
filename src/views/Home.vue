@@ -1,3 +1,3 @@
 <template>
-  <router-view/>
+  hello world
 </template>
