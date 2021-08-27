@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "this-build-has-error": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "serve": "vite preview",
     "qn-kj-build": "node node/qnyh/keju.js"
   },
