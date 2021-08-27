@@ -1,14 +1,27 @@
 <template>
-  <div>
-    <input v-model="searchVal" type="text" placeholder="search" @change="search"/>
-    <button @click="search">search</button>
-  </div>
-  <div>
-    <div v-for="({item}, index) in result" :key="index">
-      <div>{{ item.q }}</div>
-      <div>{{ item.a }}</div>
-    </div>
-  </div>
+  <el-container>
+    <el-header>
+      <el-input
+          v-model="searchVal"
+          placeholder="search"
+          :clearable="true"
+          @change="search">
+        <template #append>
+          <el-button icon="el-icon-search" @click="search"></el-button>
+        </template>
+      </el-input>
+    </el-header>
+    <el-main>
+      <el-timeline>
+        <el-timeline-item
+            v-for="({item}, index) in result"
+            :key="index"
+            :timestamp="item.a">
+          {{ item.q }}
+        </el-timeline-item>
+      </el-timeline>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
@@ -51,7 +64,7 @@ export default {
       if (!this.searchVal) {
         return
       }
-      this.result = this.idx.search(this.searchVal)
+      this.result = this.idx.search(this.searchVal).slice(0, 30)
     }
   },
   mounted() {
